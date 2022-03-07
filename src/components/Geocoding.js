@@ -46,6 +46,7 @@ function Geocoding(props) {
                 />
                 <h3 className="font-mono text-gray-500 text-lg mb-4">Resultats sans contexte de proximité</h3>
                 <div className="flex flex-col space-y-2 z-10 mb-6">
+                    {results.length === 0 && <div className="w-full italic text-gray-500 text-center">Aucun resultat</div>}
                     {results.map((result, index) => <GeocodingItem key={index} item={result} />)}
                 </div>
                 <div className="flex flex-nowrap mb-4">
@@ -55,6 +56,7 @@ function Geocoding(props) {
                         className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-800 transition-colors ease-in-out duration-150 uppercase tracking-wider font-semibold">Geolocaliser</button>
                 </div>
                 <div className="flex flex-col space-y-2 z-10">
+                    {resultsByProx.length === 0 && <div className="w-full italic text-gray-500 text-center">Aucun resultat</div>}
                     {resultsByProx.map((result, index) => <GeocodingItem key={index} item={result} />)}
                 </div>
 
