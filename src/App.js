@@ -1,5 +1,6 @@
 import Geocoding from "./components/Geocoding";
 import Map from "./components/Map";
+import SearchByProximity from "./components/SearchByProximity";
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
         <h2 className="font-mono text-2xl font-thin text-gray-500 mb-12">Cartographie</h2>
         <div className="flex">
           <div className="w-1/2 relative overflow-hidden">
-            <Map/>
+            <Map />
           </div>
           <div className="w-1/2 px-8">
             <div className="flex flex-col space-y-2 border border-gray-300 rounded-lg w-full p-4">
@@ -39,7 +40,7 @@ export default function App() {
               <h3 className="text-xl text-gray-500 font-mono">Procédure</h3>
               <p>Pas d'installation nécessaire dans cette section</p>
               <p>Ici, il faut regarder le composant Geocoding.js qui contient le formulaire avec le champ d'autocompletion.</p>
-              <p>Il n'y a rien de compliqué là-dedans, tout à été vu pendant nos cours, à savoir des champs controlés et des variables d'état. <br/> On s'appuie sur une API de l'Etat, que vous pouvez consulter à l'adresse suivante : <a className="underline text-blue-600 font-semibold" href="https://adresse.data.gouv.fr/api-doc/adresse">adresse.data.gouv.fr</a></p>
+              <p>Il n'y a rien de compliqué là-dedans, tout à été vu pendant nos cours, à savoir des champs controlés et des variables d'état. <br /> On s'appuie sur une API de l'Etat, que vous pouvez consulter à l'adresse suivante : <a className="underline text-blue-600 font-semibold" href="https://adresse.data.gouv.fr/api-doc/adresse">adresse.data.gouv.fr</a></p>
               <p>Il y a plusieurs fonctionnalités intéressantes pour nous. Dans cet exemple, il y a deux démonstration :</p>
               <ol className="list-decimal px-12">
                 <li>Recherche par géocodage</li>
@@ -51,6 +52,21 @@ export default function App() {
           <div className="w-1/2 relative overflow-hidden">
             <Geocoding />
           </div>
+        </div>
+      </div>
+      <div className="mb-16">
+        <h2 className="font-mono text-2xl font-thin text-gray-500 mb-12">Recherche par proximité</h2>
+        <div className="flex">
+          <div className="w-1/2 relative overflow-hidden">
+            <SearchByProximity />
+          </div>
+          <div className="w-1/2 px-8">
+            <div className="flex flex-col space-y-2 border border-gray-300 rounded-lg w-full p-4">
+              <h3 className="text-xl text-gray-500 font-mono">Procédure</h3>
+              
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

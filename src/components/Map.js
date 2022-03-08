@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import { PRODUCTEURS } from "../services/producteurs";
 import { iconPin, iconStar } from "./Icon";
 
-function Map() {
+function Map({center}) {
     const [position, setPosition] = useState([48.864716, 2.349]);
     const [producteurs, setProducteurs] = useState([]);
 
+    
     useEffect(() => {
+        if (!!center) {
+            setPosition(center);
+        }
+        
         navigator.geolocation.getCurrentPosition( 
                 (position) => {
                     setPosition([position.coords.latitude, position.coords.longitude]);
@@ -68,6 +73,7 @@ function Map() {
 export function MapUpdate({ center, zoom }) {
     const map = useMap();
     map.setView(center, zoom);
+    map.removeControl(map.zoomControl);
     return null;
 }
 
