@@ -63,7 +63,28 @@ export default function App() {
           <div className="w-1/2 px-8">
             <div className="flex flex-col space-y-2 border border-gray-300 rounded-lg w-full p-4">
               <h3 className="text-xl text-gray-500 font-mono">Procédure</h3>
-              
+              <p>Dans le dossier backend du projet POC se trouve un petit back permettant de faire des requêtes de recherche de producteurs par proximité.</p>
+              <p>On crée un modèle de producteur contenant un champ location comme suit: </p>
+              <code className="p-4 text-green-500 bg-slate-800 rounded-sm">
+                location: &#123; <br/>
+                &nbsp;type: &#123;<br/>
+                &nbsp;&nbsp; type: String,<br/>
+                &nbsp;&nbsp; enum: ['Point'],<br/>
+                &nbsp;&nbsp; required: true<br/>
+                &nbsp;&#125;,<br/>
+                &nbsp;coordinates: &#123;<br/>
+                &nbsp;&nbsp;type: [Number],<br/>
+                &nbsp;&nbsp;required: true<br/>
+                &nbsp;&#125;<br/>
+                &#125;
+              </code>
+              <p>Le modèle producteur contient des coordonnées qui sont utilisées pour calculer la distance entre la position passée en paramètre de requête et la localisation du producteur.</p>
+              <p>Il faut également ajouter un index au schéma producteur pour permettre la recherche par coordonnées.</p>
+              <code className="p-4 text-green-500 bg-slate-800 rounded-sm">
+                ProducteurSchema.index(&#123;location: '2dsphere'&#125;);
+              </code>
+              <p>On utilise une fonction d'aggrégation avec le mot clé <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/geoNear/" className="text-sky-600">$geoNear</a>. Le détail de la fonction se trouve dans le controller des nos routes de recherche : <span className="italic">backend/poc-backend/controllers/search.js</span></p>
+              <p>La liste des producteurs triée par ordre de distance croissant est envoyée en résultat aux front.</p>
             </div>
           </div>
 
